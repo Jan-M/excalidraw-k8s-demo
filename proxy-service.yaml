@@ -1,0 +1,20 @@
+apiVersion: "v1"
+kind: "Service"
+
+metadata:
+  name: "excalidraw-oauth2-proxy"
+  namespace: "excalidraw"
+
+  labels:
+    application: "excalidraw-oauth2-proxy"
+
+spec:
+  type: "ClusterIP"
+
+  selector:
+    application: "excalidraw-oauth2-proxy"
+
+  ports:
+    - port: 80
+      protocol: "TCP"
+      targetPort: 4180

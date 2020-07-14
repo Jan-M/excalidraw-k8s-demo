@@ -1,0 +1,19 @@
+ 
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+
+metadata:
+  name: "excalidraw"
+  namespace: "excalidraw"
+
+  labels:
+    application: "excalidraw"
+
+spec:
+  rules:
+    - host: "<yourexternaldomain>"
+      http:
+        paths:
+          - backend:
+              serviceName: "excalidraw-oauth2-proxy"
+              servicePort: 80

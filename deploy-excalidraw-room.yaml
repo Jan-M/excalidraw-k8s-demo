@@ -1,0 +1,44 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+
+metadata:
+  name: "excalidraw-room"
+  namespace: "excalidraw"
+
+  annotations:
+    downscaler/exclude: "true"
+
+  labels:
+    application: "excalidraw-room"
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      application: "excalidraw-room"
+
+  template:
+
+    metadata:
+
+      labels:
+        application: "excalidraw-room"
+
+    spec:
+
+      containers:
+
+        - name: "service"
+          image: "<excalidraw-room-image>"
+
+          ports:
+            - containerPort: 80
+              protocol: "TCP"
+
+          resources:
+            limits:
+              memory: "1000Mi"
+            requests:
+              cpu: "100m"
+              memory: "1000Mi"

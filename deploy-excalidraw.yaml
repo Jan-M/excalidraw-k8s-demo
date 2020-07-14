@@ -1,0 +1,47 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+
+metadata:
+  name: "excalidraw"
+  namespace: "excalidraw"
+
+  annotations:
+    downscaler/exclude: "true"
+
+  labels:
+    application: "excalidraw"
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      application: "excalidraw"
+
+  template:
+
+    metadata:
+
+      labels:
+        application: "excalidraw"
+
+    spec:
+
+      containers:
+
+        - name: "service"
+          image: "<excalidraw-image>"
+
+          ports:
+            - containerPort: 80
+              protocol: "TCP"
+
+          resources:
+            limits:
+              memory: "1000Mi"
+            requests:
+              cpu: "100m"
+              memory: "1000Mi"
+          env:
+            - name: "REACT_APP_SOCKET_SERVER_URL"
+              value: "<your-exalidraw-domain>"

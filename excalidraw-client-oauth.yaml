@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: excalidraw-client
+  namespace: excalidraw
+type: Opaque
+data:
+  client: "google client id"
+  client_secret: "google client secret"
